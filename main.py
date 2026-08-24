@@ -1,10 +1,19 @@
 from fastapi import FastAPI, Request
 import time
 import logging
+from fastapi.middleware.cors import CORSMiddleware
 from app.routers.api.v1 import auth_routes as auth
 from app.routers.api.v1 import chapter_routes as chapters
 from app.routers.api.v1 import manga_routes as mangas
 app = FastAPI(description="Ini adalah backend server dari mangaweb")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origin_regex=r"^https?://.*$",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(auth.router)
 app.include_router(mangas.router)
 app.include_router(chapters.router)

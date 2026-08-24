@@ -6,6 +6,11 @@ dist/
 wheels/
 *.egg-info
 conversations/
+imgindex/
+scripts/
+tests/
+localhost+3.pem
+localhost+3-key.pem
 
 # Virtual environments
 .venv
